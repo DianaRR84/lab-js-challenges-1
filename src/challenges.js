@@ -1,67 +1,123 @@
 // Iteration 1 | Count Repetition
-const repeatedWords = [
-  "machine",
-  "matter",
-  "subset",
-  "trouble",
-  "starting",
-  "matter",
-  "eating",
-  "matter",
-  "truth",
-  "disobedience",
-  "matter"
-];
+function howManyTimes(wordsArray, wordToSearch) {
+  let countWords = 0;
+  
+  // Loop through the array and count occurrences of the word
+  wordsArray.forEach(word => {
+    if (word === wordToSearch) {
+      count++;
+    }
+  });
+  
+  return countWords;
+}
 
-function howManyTimes() {}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0){
+    return [];
+  }
 
+  let sequence = [];
+  
+  // Loop from 0 to n and push each number to the array
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+  
+  return sequence;
+}
+//console.log(createSequence(7));
 
 
 
 // Iteration 3 | Multiply for Each
-const numbers = [1, 2, 5, 10, 13, 50];
+function multiplyBy(numbersArray, multiplier) {
+  let result = [];
+  
+  // Use forEach to iterate over the numbersArray
+  numbersArray.forEach(number => {
+    result.push(number * multiplier);
+  });
+  
+  return result;
+}
 
-function multiplyBy() {}
+// Test the function
+const numbers = [1, 2, 5, 10, 13, 50];
+console.log(multiplyBy(numbers, 3));
+
 
 
 
 
 // Iteration 4 | Filter Out
-const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
-const toRemove = ["cat", "dog"];
-
-function filterOut() {}
+function filterOut(original, toRemove) {
+  // Check if the original array is empty
+  if (original.length === 0) {
+    return null;  // Return null if the original array is empty
+  }
+  // Use the filter method to return a new array with elements not in toRemove
+  return original.filter(item => !toRemove.includes(item));
+}
 
 
 
 
 // Iteration 5 | Unique Arrays
-const duplicateWords = [
-  "crab",
-  "poison",
-  "contagious",
-  "simple",
-  "bring",
-  "sharp",
-  "playground",
-  "poison",
-  "communion",
-  "simple",
-  "bring"
-];
-
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  // Check if the array is empty
+  if (words.length === 0) {
+    return null;  // Return null if the array is empty
+  }
+  
+  // Create a new array with unique values
+  const uniqueWords = [];
+  
+  words.forEach(word => {
+    if (!uniqueWords.includes(word)) {
+      uniqueWords.push(word);
+    }
+  });
+  
+  return uniqueWords;
+  }
 
 
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+
+  const numRows = matrix.length;
+  const numCols = matrix[0].length;
+
+  // Loop through each element in the matrix
+  for (let row = 0; row < numRows; row++) {
+    for (let col = 0; col < numCols; col++) {
+      // Check horizontally (rightwards)
+      if (col + 3 < numCols) {
+        let horizontalProduct = matrix[row][col] * matrix[row][col + 1] * matrix[row][col + 2] * matrix[row][col + 3];
+        maxProduct = Math.max(maxProduct, horizontalProduct);
+      }
+
+      // Check vertically (downwards)
+      if (row + 3 < numRows) {
+        let verticalProduct = matrix[row][col] * matrix[row + 1][col] * matrix[row + 2][col] * matrix[row + 3][col];
+        maxProduct = Math.max(maxProduct, verticalProduct);
+      }
+    }
+  }
+
+  return maxProduct;
+}
+
+// Test with the provided matrix
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -85,4 +141,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+console.log(greatestProduct(matrix));
